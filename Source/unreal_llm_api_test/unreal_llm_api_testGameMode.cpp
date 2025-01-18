@@ -2,7 +2,6 @@
 
 #include "unreal_llm_api_testGameMode.h"
 
-#include "GenOAIChat.h"
 #include "GenSecureKey.h"
 #include "UObject/ConstructorHelpers.h"
 
@@ -14,8 +13,7 @@ Aunreal_llm_api_testGameMode::Aunreal_llm_api_testGameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
-
-
+	
 	// Get the API key from the plugin
 	FString ApiKey = UGenSecureKey::GetGenerativeAIApiKey();
 	
@@ -26,34 +24,6 @@ Aunreal_llm_api_testGameMode::Aunreal_llm_api_testGameMode()
 		GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, DisplayMessage);
 	}
 
-
-
-	// Define chat settings for testing
-	FGenChatSettings ChatSettings;
-	ChatSettings.Model = TEXT("gpt-4o");
-	ChatSettings.MaxTokens = 100;
-    
-	// Add initial user message
-	FGenChatMessage UserMessage;
-	UserMessage.Role = TEXT("user");
-	UserMessage.Content = TEXT("Hello, AI! How are you?");
-	ChatSettings.Messages.Add(UserMessage);
-
-	// Create the chat node and initiate the request
-	UGenOAIChat* ChatNode = UGenOAIChat::CallOpenAIChat(this, ChatSettings);
-	if (ChatNode)
-	{
-		ChatNode->Finished.AddDynamic(this, &Aunreal_llm_api_testGameMode::OnChatCompletion);
-		ChatNode->Activate();
-	}
-	else
-	{
-		// Log if the chat node creation fails
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Red, TEXT("Failed to create ChatNode"));
-		}
-	}
 }
 
 void Aunreal_llm_api_testGameMode::OnChatCompletion(const FString& ResponseContent, const FString& ErrorMessage, bool bSuccess)
