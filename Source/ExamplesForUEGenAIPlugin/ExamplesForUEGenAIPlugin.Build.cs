@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class unreal_llm_api_test : ModuleRules
+public class ExamplesForUEGenAIPlugin : ModuleRules
 {
-	public unreal_llm_api_test(ReadOnlyTargetRules Target) : base(Target)
+	public ExamplesForUEGenAIPlugin(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PrivateDependencyModuleNames.AddRange(new string[] { "GenerativeAISupport" });
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;

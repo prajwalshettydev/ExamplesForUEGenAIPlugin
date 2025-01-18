@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class UNREAL_LLM_API_TEST_API UTHelper : public UObject
+class EXAMPLESFORUEGENAIPLUGIN_API UTHelper : public UObject
 {
 	GENERATED_BODY()
 

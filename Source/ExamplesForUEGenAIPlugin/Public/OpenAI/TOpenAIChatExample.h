@@ -7,7 +7,7 @@
 #include "TOpenAIChatExample.generated.h"
 
 UCLASS()
-class UNREAL_LLM_API_TEST_API ATOpenAIChatExample : public AActor
+class EXAMPLESFORUEGENAIPLUGIN_API ATOpenAIChatExample : public AActor
 {
 	GENERATED_BODY()
 

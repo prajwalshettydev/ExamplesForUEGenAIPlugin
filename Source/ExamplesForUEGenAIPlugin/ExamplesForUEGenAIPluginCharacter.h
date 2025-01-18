@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
-#include "unreal_llm_api_testCharacter.generated.h"
+#include "ExamplesForUEGenAIPluginCharacter.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
@@ -16,7 +16,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class Aunreal_llm_api_testCharacter : public ACharacter
+class EXAMPLESFORUEGENAIPLUGIN_API AExamplesForUEGenAIPluginCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -45,7 +45,7 @@ class Aunreal_llm_api_testCharacter : public ACharacter
 	UInputAction* LookAction;
 
 public:
-	Aunreal_llm_api_testCharacter();
+	AExamplesForUEGenAIPluginCharacter();
 	
 
 protected:

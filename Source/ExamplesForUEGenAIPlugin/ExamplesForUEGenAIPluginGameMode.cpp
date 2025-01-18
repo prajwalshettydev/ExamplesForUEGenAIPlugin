@@ -1,11 +1,11 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "unreal_llm_api_testGameMode.h"
+#include "ExamplesForUEGenAIPluginGameMode.h"
 
 #include "GenSecureKey.h"
 #include "UObject/ConstructorHelpers.h"
 
-Aunreal_llm_api_testGameMode::Aunreal_llm_api_testGameMode()
+AExamplesForUEGenAIPluginGameMode::AExamplesForUEGenAIPluginGameMode()
 {
 	// set default pawn class to our Blueprinted character
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter"));
@@ -26,7 +26,7 @@ Aunreal_llm_api_testGameMode::Aunreal_llm_api_testGameMode()
 
 }
 
-void Aunreal_llm_api_testGameMode::OnChatCompletion(const FString& ResponseContent, const FString& ErrorMessage, bool bSuccess)
+void AExamplesForUEGenAIPluginGameMode::OnChatCompletion(const FString& ResponseContent, const FString& ErrorMessage, bool bSuccess)
 {
 	if (bSuccess)
 	{

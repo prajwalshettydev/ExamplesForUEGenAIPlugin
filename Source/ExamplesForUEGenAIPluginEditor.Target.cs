@@ -3,13 +3,13 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class unreal_llm_api_testEditorTarget : TargetRules
+public class ExamplesForUEGenAIPluginEditorTarget : TargetRules
 {
-	public unreal_llm_api_testEditorTarget(TargetInfo Target) : base(Target)
+	public ExamplesForUEGenAIPluginEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_4;
-		ExtraModuleNames.Add("unreal_llm_api_test");
+		ExtraModuleNames.Add("ExamplesForUEGenAIPlugin");
 	}
 }

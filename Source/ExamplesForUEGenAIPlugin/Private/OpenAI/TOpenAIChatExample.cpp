@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "unreal_llm_api_test/Public/OpenAI/TOpenAIChatExample.h"
+#include "OpenAI/TOpenAIChatExample.h"
 
 #include "Data/OpenAI/GenOAIChat.h"
 #include "Data/OpenAI/GenOAIChatStructs.h"
-#include "unreal_llm_api_test/Public/Utilities/THelper.h"
+#include "Utilities/THelper.h"
 
 
 // Sets default values

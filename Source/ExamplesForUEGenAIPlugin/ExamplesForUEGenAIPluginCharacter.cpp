@@ -1,6 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "unreal_llm_api_testCharacter.h"
+#include "ExamplesForUEGenAIPluginCharacter.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -14,9 +14,9 @@
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 //////////////////////////////////////////////////////////////////////////
-// Aunreal_llm_api_testCharacter
+// AExamplesForUEGenAIPluginCharacter
 
-Aunreal_llm_api_testCharacter::Aunreal_llm_api_testCharacter()
+AExamplesForUEGenAIPluginCharacter::AExamplesForUEGenAIPluginCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -54,7 +54,7 @@ Aunreal_llm_api_testCharacter::Aunreal_llm_api_testCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-void Aunreal_llm_api_testCharacter::BeginPlay()
+void AExamplesForUEGenAIPluginCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
@@ -63,7 +63,7 @@ void Aunreal_llm_api_testCharacter::BeginPlay()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void Aunreal_llm_api_testCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AExamplesForUEGenAIPluginCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Add Input Mapping Context
 	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
@@ -82,10 +82,10 @@ void Aunreal_llm_api_testCharacter::SetupPlayerInputComponent(UInputComponent* P
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		// Moving
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &Aunreal_llm_api_testCharacter::Move);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AExamplesForUEGenAIPluginCharacter::Move);
 
 		// Looking
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &Aunreal_llm_api_testCharacter::Look);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AExamplesForUEGenAIPluginCharacter::Look);
 	}
 	else
 	{
@@ -93,7 +93,7 @@ void Aunreal_llm_api_testCharacter::SetupPlayerInputComponent(UInputComponent* P
 	}
 }
 
-void Aunreal_llm_api_testCharacter::Move(const FInputActionValue& Value)
+void AExamplesForUEGenAIPluginCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
@@ -116,7 +116,7 @@ void Aunreal_llm_api_testCharacter::Move(const FInputActionValue& Value)
 	}
 }
 
-void Aunreal_llm_api_testCharacter::Look(const FInputActionValue& Value)
+void AExamplesForUEGenAIPluginCharacter::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();

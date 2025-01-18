@@ -1,11 +1,11 @@
-{
+	{
 	"FileVersion": 3,
 	"EngineAssociation": "5.4",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "unreal_llm_api_test",
+			"Name": "ExamplesForUEGenAIPlugin",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}

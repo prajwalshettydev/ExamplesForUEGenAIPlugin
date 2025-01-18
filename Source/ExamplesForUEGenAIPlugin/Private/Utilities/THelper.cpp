@@ -1,8 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "unreal_llm_api_test/Public/Utilities/THelper.h"
-
+#include "Utilities/THelper.h"
 
 bool UTHelper::IsContextStillValid(const TWeakObjectPtr<UObject> ContextObject)
 {
