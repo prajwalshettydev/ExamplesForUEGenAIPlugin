@@ -21,11 +21,14 @@ void ATOpenAIChatExample::BeginPlay()
 	Super::BeginPlay();
 
 	FGenChatSettings ChatSettings;
-	ChatSettings.Model = TEXT("gpt-4o");
+	ChatSettings.Model = TEXT("gpt-4o-mini");
 	ChatSettings.Messages.Add(FGenChatMessage{
 		TEXT("system"),
-		TEXT("The conversation has now Ended. Summarize the above conversation in two concise sentences for bookkeeping.")
+		TEXT("Hi chat!, this is a test message, sing a song i guess?")
 	});
+	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("This is the first test message from the user")});
+    ChatSettings.Messages.Add(FGenChatMessage{TEXT("assistant"), TEXT("Typically you will store the assitant response and then append them hear")});
+	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("This is a test message from the user for which gpt will now respond to")});
 	ChatSettings.MaxTokens = 16384;
 
 	UGenOAIChat::SendChatRequest(
