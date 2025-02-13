@@ -2,7 +2,7 @@
 
 #include "ExamplesForUEGenAIPluginGameMode.h"
 
-#include "GenSecureKey.h"
+#include "Secure/GenSecureKey.h"
 #include "UObject/ConstructorHelpers.h"
 
 AExamplesForUEGenAIPluginGameMode::AExamplesForUEGenAIPluginGameMode()
@@ -15,14 +15,14 @@ AExamplesForUEGenAIPluginGameMode::AExamplesForUEGenAIPluginGameMode()
 	}
 	
 	// Get the API key from the plugin
-	FString ApiKey = UGenSecureKey::GetGenerativeAIApiKey();
-	
-	// Display the API key if everything is successful
-	if (GEngine)
-	{
-		FString DisplayMessage = FString::Printf(TEXT("Generative AI API Key: %s"), *ApiKey);
-		GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, DisplayMessage);
-	}
+	// FString ApiKey = UGenSecureKey::GetGenerativeAIApiKey(EGenAIOrgs::DeepSeek);
+	//
+	// // Display the API key if everything is successful
+	// if (GEngine)
+	// {
+	// 	FString DisplayMessage = FString::Printf(TEXT("Generative AI API Key: %s"), *ApiKey);
+	// 	GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, DisplayMessage);
+	// }
 
 }
 

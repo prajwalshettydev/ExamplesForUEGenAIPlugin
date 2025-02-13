@@ -2,9 +2,10 @@
 
 
 #include "OpenAI/TOpenAIChatExample.h"
-
-#include "Data/OpenAI/GenOAIChat.h"
 #include "Data/OpenAI/GenOAIChatStructs.h"
+#include "Data/GenAIOrgs.h"
+#include "Models/OpenAI/GenOAIChat.h"
+#include "Secure/GenSecureKey.h"
 #include "Utilities/THelper.h"
 
 
@@ -19,6 +20,8 @@ ATOpenAIChatExample::ATOpenAIChatExample()
 void ATOpenAIChatExample::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	UE_LOG(LogTemp, Warning, TEXT("OpenAI Key: %s"), *UGenSecureKey::GetGenerativeAIApiKey(EGenAIOrgs::OpenAI));
 
 	FGenChatSettings ChatSettings;
 	ChatSettings.Model = TEXT("gpt-4o-mini");
