@@ -4,3 +4,7 @@ Please refer to [UnrealGenAISupport](https://github.com/prajwalshettydev/UnrealG
 ## How to use this project:
 
 Drag and drop either the C++ classes or the Blueprint classes into your project. You should see appropriate api responses in the Log.
+
+
+## About:
+Unreal Engine Version: 5.4.4 
