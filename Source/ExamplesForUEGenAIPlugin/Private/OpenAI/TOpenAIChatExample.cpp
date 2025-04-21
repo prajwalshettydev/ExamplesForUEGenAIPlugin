@@ -24,36 +24,150 @@ void ATOpenAIChatExample::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("OpenAI Key: %s"), *UGenSecureKey::GetGenerativeAIApiKey(EGenAIOrgs::OpenAI));
 
 	FGenChatSettings ChatSettings;
-	ChatSettings.Model = TEXT("gpt-4o-mini");
+	
+	// Using the enum instead of directly setting the model string
+	ChatSettings.ModelEnum = EGenOAIChatModel::GPT_4O_Mini;
+	// The UpdateModel() function will be called inside MakeRequest
+	
 	ChatSettings.Messages.Add(FGenChatMessage{
 		TEXT("system"),
-		TEXT("Hi chat!, this is a test message, sing a song i guess?")
+		TEXT("You are a helpful AI assistant. Please respond briefly and clearly.")
 	});
-	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("This is the first test message from the user")});
-    ChatSettings.Messages.Add(FGenChatMessage{TEXT("assistant"), TEXT("Typically you will store the assitant response and then append them hear")});
-	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("This is a test message from the user for which gpt will now respond to")});
-	ChatSettings.MaxTokens = 16384;
+	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("What are the latest OpenAI models available and their differences?")});
+	ChatSettings.MaxTokens = 1024;
 
+	// First example using gpt-4o-mini
 	UGenOAIChat::SendChatRequest(
 		ChatSettings,
 		FOnChatCompletionResponse::CreateLambda(
-			[this/*, OnResponseGenerated*/](const FString& Response, const FString& ErrorMessage, bool bSuccess)
+			[this](const FString& Response, const FString& ErrorMessage, bool bSuccess)
 			{
 				if (!UTHelper::IsContextStillValid(this))
 				{
 					return;
 				}
-				/*if (bSuccess)
-				{
-					OnResponseGenerated(Response);
-				}*/
-
 				
-				UE_LOG(LogTemp, Warning, TEXT("Chat response: %s"), *Response);
+				UE_LOG(LogTemp, Warning, TEXT("GPT-4o-mini response: %s"), *Response);
 				
+				// Now test the GPT-4.1-mini model after receiving the first response
+				TestGPT41Mini();
 			})
 	);
+}
+
+void ATOpenAIChatExample::TestGPT41Mini()
+{
+	FGenChatSettings ChatSettings;
+	ChatSettings.ModelEnum = EGenOAIChatModel::GPT_4_1_Mini;
 	
+	ChatSettings.Messages.Add(FGenChatMessage{
+		TEXT("system"),
+		TEXT("You are a helpful AI assistant. Keep responses very concise.")
+	});
+	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("What's special about the GPT-4.1 series of models?")});
+	ChatSettings.MaxTokens = 1024;
+
+	UGenOAIChat::SendChatRequest(
+		ChatSettings,
+		FOnChatCompletionResponse::CreateLambda(
+			[this](const FString& Response, const FString& ErrorMessage, bool bSuccess)
+			{
+				if (!UTHelper::IsContextStillValid(this))
+				{
+					return;
+				}
+				
+				UE_LOG(LogTemp, Warning, TEXT("GPT-4.1-mini response: %s"), *Response);
+				
+				// Now test the GPT-4.1-nano model
+				TestGPT41Nano();
+			})
+	);
+}
+
+void ATOpenAIChatExample::TestGPT41Nano()
+{
+	FGenChatSettings ChatSettings;
+	ChatSettings.ModelEnum = EGenOAIChatModel::GPT_4_1_Nano;
+	
+	ChatSettings.Messages.Add(FGenChatMessage{
+		TEXT("system"),
+		TEXT("You are a helpful AI assistant.")
+	});
+	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("Compare GPT-4.1-nano to GPT-4o-mini in terms of performance and capabilities.")});
+	ChatSettings.MaxTokens = 1024;
+
+	UGenOAIChat::SendChatRequest(
+		ChatSettings,
+		FOnChatCompletionResponse::CreateLambda(
+			[this](const FString& Response, const FString& ErrorMessage, bool bSuccess)
+			{
+				if (!UTHelper::IsContextStillValid(this))
+				{
+					return;
+				}
+				
+				UE_LOG(LogTemp, Warning, TEXT("GPT-4.1-nano response: %s"), *Response);
+
+				TestGPTO4Mini();
+			})
+	);
+}
+
+void ATOpenAIChatExample::TestGPTO4Mini()
+{
+	FGenChatSettings ChatSettings;
+	ChatSettings.ModelEnum = EGenOAIChatModel::O4_Mini;
+	
+	ChatSettings.Messages.Add(FGenChatMessage{
+		TEXT("system"),
+		TEXT("You are a helpful AI assistant.")
+	});
+	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("What are the key differences between GPT-o4 and GPT-o4-mini?")});
+	ChatSettings.MaxTokens = 1024;
+
+	UGenOAIChat::SendChatRequest(
+		ChatSettings,
+		FOnChatCompletionResponse::CreateLambda(
+			[this](const FString& Response, const FString& ErrorMessage, bool bSuccess)
+			{
+				if (!UTHelper::IsContextStillValid(this))
+				{
+					return;
+				}
+
+				TestO3();
+				
+				UE_LOG(LogTemp, Warning, TEXT("GPT-O4 response: %s"), *Response);
+			})
+	);
+}
+
+void ATOpenAIChatExample::TestO3()
+{
+	FGenChatSettings ChatSettings;
+	ChatSettings.ModelEnum = EGenOAIChatModel::O3;
+	
+	ChatSettings.Messages.Add(FGenChatMessage{
+		TEXT("system"),
+		TEXT("You are a helpful AI assistant.")
+	});
+	ChatSettings.Messages.Add(FGenChatMessage{TEXT("user"), TEXT("What are the key differences between GPT-o4 and O3?")});
+	ChatSettings.MaxTokens = 1024;
+
+	UGenOAIChat::SendChatRequest(
+		ChatSettings,
+		FOnChatCompletionResponse::CreateLambda(
+			[this](const FString& Response, const FString& ErrorMessage, bool bSuccess)
+			{
+				if (!UTHelper::IsContextStillValid(this))
+				{
+					return;
+				}
+				
+				UE_LOG(LogTemp, Warning, TEXT("O3 response: %s"), *Response);
+			})
+	);
 }
 
 // Called every frame
@@ -61,4 +175,3 @@ void ATOpenAIChatExample::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
-

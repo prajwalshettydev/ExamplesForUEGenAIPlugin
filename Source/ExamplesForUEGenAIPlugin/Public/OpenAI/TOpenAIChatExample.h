@@ -10,8 +10,8 @@ UCLASS()
 class EXAMPLESFORUEGENAIPLUGIN_API ATOpenAIChatExample : public AActor
 {
 	GENERATED_BODY()
-
-public:
+	
+public:	
 	// Sets default values for this actor's properties
 	ATOpenAIChatExample();
 
@@ -19,7 +19,14 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:
+	// Methods to test different models
+	void TestGPT41Mini();
+	void TestGPT41Nano();
+	void TestGPTO4Mini();
+	void TestO3();
+
+public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 };
